@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 215 50% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 50% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 50% 12%;
+
+    --primary: 215 70% 18%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 60% 45%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 15% 50%;
+
+    --accent: 38 90% 55%;
+    --accent-foreground: 215 70% 12%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 215 70% 18%;
+
+    --radius: 0.75rem;
+
+    --hero-gradient: linear-gradient(135deg, hsl(215 70% 18%) 0%, hsl(215 60% 28%) 50%, hsl(200 60% 35%) 100%);
+    --card-shadow: 0 4px 24px -4px hsl(215 70% 18% / 0.08);
+    --card-shadow-hover: 0 12px 40px -8px hsl(215 70% 18% / 0.15);
+    --gold-gradient: linear-gradient(135deg, hsl(38 90% 55%) 0%, hsl(42 95% 60%) 100%);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  @media (min-width: 1280px) {
+    body {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    body {
+      font-size: 17px;
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+  }
+
+  @media (min-width: 1280px) {
+    h1 {
+      font-size: 2.75rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    h1 {
+      font-size: 3.25rem;
+    }
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+
+  @media (min-width: 1280px) {
+    h2 {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  @media (min-width: 1920px) {
+    h3 {
+      font-size: 1.75rem;
+    }
+  }
+
+  p {
+    line-height: 1.75;
+  }
+
+  @media (min-width: 1920px) {
+    p {
+      line-height: 1.8;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gold-gradient);
+  }
+
+  .hero-bg {
+    background: var(--hero-gradient);
+  }
+
+  .card-elevated {
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--card-shadow-hover);
+    transform: translateY(-4px);
+  }
+
+  /* Container responsive widths */
+  .container {
+    @apply mx-auto px-4;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      @apply px-6;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      @apply px-8;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      max-width: 1240px;
+      @apply px-10;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container {
+      max-width: 1400px;
+      @apply px-12;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .container {
+      max-width: 1600px;
+      @apply px-16;
+    }
+  }
+}
