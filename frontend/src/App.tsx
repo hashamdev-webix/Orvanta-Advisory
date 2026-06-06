@@ -15,6 +15,8 @@ import SignUpPage from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 import Payment from "./pages/Payment";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CanadaServices from "./pages/CanadaServices";
+import CanadaServiceDetail from "./pages/CanadaServiceDetail";
 
 // Immigration Services
 import VisaServices from "./pages/services/immigration/VisaServices";
@@ -77,6 +79,8 @@ const App = () => (
         <Route path="/locations/hong-kong" element={<HongKong />} />
         
         <Route path="/contact" element={<Contact />} />
+        <Route path="/canada" element={<CanadaServices />} />
+        <Route path="/canada/:service" element={<CanadaServiceDetail />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-in/*" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
