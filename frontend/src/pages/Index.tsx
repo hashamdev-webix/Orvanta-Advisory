@@ -117,7 +117,7 @@ const Index = () => {
           <div className="absolute right-[10%] bottom-[8%] h-96 w-96 rounded-full border border-accent/20" />
         </div>
 
-        <div className="container relative mx-auto grid min-h-[calc(100vh-5rem)] max-w-[1500px] items-center gap-12 px-5 py-12 lg:grid-cols-[0.86fr_1.14fr] lg:px-10 lg:py-14">
+        <div className="container relative mx-auto grid min-h-[620px] max-w-[1500px] items-start gap-8 px-5 pt-4 pb-0 lg:grid-cols-[0.86fr_1.14fr] lg:px-10 lg:pt-6">
           <motion.div initial="hidden" animate="visible" className="max-w-xl">
             <motion.h1
               variants={fadeUp}
@@ -247,7 +247,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section className="bg-[#F1F5FC] py-4">
+      <section className="bg-[#F1F5FC] py-0">
         <div className="container mx-auto max-w-[1400px] px-5 lg:px-10">
           <div className="rounded-xl bg-white px-6 py-6 shadow-sm">
             <div className="grid items-center gap-6 lg:grid-cols-[1.1fr_repeat(4,1fr)]">
