@@ -31,11 +31,6 @@ import Stocks from "./pages/services/investments/Stocks";
 // Consultation Services
 import GlobalMarket from "./pages/services/consultation/GlobalMarket";
 
-// Locations
-import UK from "./pages/locations/UK";
-import India from "./pages/locations/India";
-import HongKong from "./pages/locations/HongKong";
-
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -73,14 +68,13 @@ const App = () => (
         <Route path="/services/legal/risk-management" element={<Services />} />
         <Route path="/services/legal/dispute-prevention" element={<Services />} />
         
-        {/* Locations */}
-        <Route path="/locations/uk" element={<UK />} />
-        <Route path="/locations/india" element={<India />} />
-        <Route path="/locations/hong-kong" element={<HongKong />} />
-        
         <Route path="/contact" element={<Contact />} />
         <Route path="/canada" element={<CanadaServices />} />
+        <Route path="/canada/:service/:serviceItem" element={<CanadaServiceDetail />} />
         <Route path="/canada/:service" element={<CanadaServiceDetail />} />
+        <Route path="/locations/:countrySlug" element={<CanadaServices />} />
+        <Route path="/locations/:countrySlug/:service/:serviceItem" element={<CanadaServiceDetail />} />
+        <Route path="/locations/:countrySlug/:service" element={<CanadaServiceDetail />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-in/*" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />

@@ -62,7 +62,7 @@ const countries = [
       "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=720&h=460&fit=crop",
     text: "Residency and investment solutions in a tax-friendly and secure environment.",
     cta: "Explore Belize",
-    link: "/contact",
+    link: "/locations/belize",
   },
 ];
 

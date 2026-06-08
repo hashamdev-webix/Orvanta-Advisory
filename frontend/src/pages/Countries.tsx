@@ -16,7 +16,8 @@ const countries = [
     desc: "Study at world-renowned universities like Oxford, Cambridge, and Imperial College. Work visa options through the Skilled Worker route.",
     image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&h=400&fit=crop",
     buttonText: "Explore UK Visas",
-    gradient: "from-blue-600/40 to-red-600/40"
+    gradient: "from-blue-600/40 to-red-600/40",
+    link: "/locations/uk",
   },
   { 
     flag: "🇨🇦", 
@@ -24,7 +25,8 @@ const countries = [
     desc: "Immigration-friendly policies, Express Entry, and Post-Graduation Work Permits. One of the best countries for permanent residency.",
     image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?w=600&h=400&fit=crop",
     buttonText: "Discover Canada",
-    gradient: "from-red-600/40 to-red-700/40"
+    gradient: "from-red-600/40 to-red-700/40",
+    link: "/canada",
   },
   { 
     flag: "🇦🇺", 
@@ -32,7 +34,8 @@ const countries = [
     desc: "Top-tier education system, skilled migration programs, and excellent quality of life. Student and skilled worker visas available.",
     image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=600&h=400&fit=crop",
     buttonText: "Start Your Journey",
-    gradient: "from-blue-500/40 to-yellow-500/40"
+    gradient: "from-blue-500/40 to-yellow-500/40",
+    link: "/locations/australia",
   },
   { 
     flag: "🇩🇪", 
@@ -40,7 +43,8 @@ const countries = [
     desc: "Tuition-free public universities, strong STEM programs, and Europe's largest economy. Job Seeker and Blue Card visas available.",
     image: "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&h=400&fit=crop",
     buttonText: "Apply for Germany",
-    gradient: "from-yellow-500/40 to-red-600/40"
+    gradient: "from-yellow-500/40 to-red-600/40",
+    link: "/locations/germany",
   },
   { 
     flag: "🇦🇪", 
@@ -48,7 +52,8 @@ const countries = [
     desc: "Thriving job market in Dubai and Abu Dhabi. Work visas, investor visas, and golden visa programs for professionals.",
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&h=400&fit=crop",
     buttonText: "Explore UAE Options",
-    gradient: "from-green-600/40 to-red-600/40"
+    gradient: "from-green-600/40 to-red-600/40",
+    link: "/locations/uae",
   },
   { 
     flag: "🇪🇺", 
@@ -56,7 +61,8 @@ const countries = [
     desc: "Access 27 European countries with a single Schengen visa. Ideal for tourism, business, and short-term stays across Europe.",
     image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600&h=400&fit=crop",
     buttonText: "Get Schengen Visa",
-    gradient: "from-blue-700/40 to-yellow-500/40"
+    gradient: "from-blue-700/40 to-yellow-500/40",
+    link: "/locations/schengen-europe",
   },
 ];
 
@@ -111,7 +117,7 @@ const Countries = () => {
                 </div>
                 <div className="p-8 flex flex-col flex-1">
                   <p className="text-muted-foreground text-base leading-relaxed mb-8 flex-1">{c.desc}</p>
-                  <Link to="/contact">
+                  <Link to={c.link}>
                     <Button className="w-full group bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-lg hover:shadow-xl transition-all duration-200 h-12 text-base">
                       {c.buttonText} <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>
@@ -121,10 +127,10 @@ const Countries = () => {
             ))}
           </div>
 
-          {/* Second row - 2 cards centered on desktop, full width on mobile */}
+          {/* Remaining countries */}
           <div className="flex justify-center">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 w-full lg:w-auto">
-            {countries.slice(3, 5).map((c, i) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+            {countries.slice(3).map((c, i) => (
               <motion.div
                 key={c.name}
                 initial="hidden"
@@ -132,7 +138,7 @@ const Countries = () => {
                 viewport={{ once: true }}
                 variants={fadeUp}
                 custom={i + 3}
-                className="bg-card rounded-2xl overflow-hidden card-elevated border border-border flex flex-col group lg:w-[calc((100vw-8rem)/3)] lg:max-w-[400px]"
+                className="bg-card rounded-2xl overflow-hidden card-elevated border border-border flex flex-col group"
               >
                 <div className="relative h-56 overflow-hidden">
                   <img 
@@ -147,7 +153,7 @@ const Countries = () => {
                 </div>
                 <div className="p-8 flex flex-col flex-1">
                   <p className="text-muted-foreground text-base leading-relaxed mb-8 flex-1">{c.desc}</p>
-                  <Link to="/contact">
+                  <Link to={c.link}>
                     <Button className="w-full group bg-primary text-primary-foreground hover:bg-primary/90 font-semibold shadow-lg hover:shadow-xl transition-all duration-200 h-12 text-base">
                       {c.buttonText} <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
                     </Button>

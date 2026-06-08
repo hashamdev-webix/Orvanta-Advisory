@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -15,6 +15,131 @@ import {
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 
+const countryPages = {
+  canada: {
+    name: "Canada",
+    shortName: "Canada",
+    accent: "#C93432",
+    selectedLabel: "Canada Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1517090504586-fde19ea6066f?w=1400&h=720&fit=crop",
+    routeBase: "/canada",
+    leafClass: "text-red-600/7",
+    showLeafDecor: true,
+    description:
+      "Choose the advisory service you need to explore tailored support options in Canada.",
+  },
+  india: {
+    name: "India",
+    shortName: "India",
+    accent: "#E28B20",
+    selectedLabel: "India Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1400&h=720&fit=crop",
+    routeBase: "/locations/india",
+    leafClass: "text-orange-600/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options for India.",
+  },
+  uk: {
+    name: "United Kingdom",
+    shortName: "UK",
+    accent: "#2F5FB3",
+    selectedLabel: "United Kingdom Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&h=720&fit=crop",
+    routeBase: "/locations/uk",
+    leafClass: "text-blue-700/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options in the United Kingdom.",
+  },
+  "hong-kong": {
+    name: "Hong Kong",
+    shortName: "Hong Kong",
+    accent: "#D63B36",
+    selectedLabel: "Hong Kong Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=1400&h=720&fit=crop",
+    routeBase: "/locations/hong-kong",
+    leafClass: "text-red-700/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options in Hong Kong.",
+  },
+  belize: {
+    name: "Belize",
+    shortName: "Belize",
+    accent: "#008A8A",
+    selectedLabel: "Belize Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1518638150340-f706e86654de?w=1400&h=720&fit=crop",
+    routeBase: "/locations/belize",
+    leafClass: "text-teal-700/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options in Belize.",
+  },
+  australia: {
+    name: "Australia",
+    shortName: "Australia",
+    accent: "#D5A21E",
+    selectedLabel: "Australia Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?w=1400&h=720&fit=crop",
+    routeBase: "/locations/australia",
+    leafClass: "text-yellow-600/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options in Australia.",
+  },
+  germany: {
+    name: "Germany",
+    shortName: "Germany",
+    accent: "#D84B34",
+    selectedLabel: "Germany Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=1400&h=720&fit=crop",
+    routeBase: "/locations/germany",
+    leafClass: "text-red-600/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options in Germany.",
+  },
+  uae: {
+    name: "UAE",
+    shortName: "UAE",
+    accent: "#0F8E69",
+    selectedLabel: "UAE Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1400&h=720&fit=crop",
+    routeBase: "/locations/uae",
+    leafClass: "text-emerald-700/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options in the UAE.",
+  },
+  "schengen-europe": {
+    name: "Schengen Europe",
+    shortName: "Schengen Europe",
+    accent: "#3569C8",
+    selectedLabel: "Schengen Europe Selected",
+    heroImage:
+      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&h=720&fit=crop",
+    routeBase: "/locations/schengen-europe",
+    leafClass: "text-blue-700/7",
+    showLeafDecor: false,
+    description:
+      "Choose the advisory service you need to explore tailored support options across Schengen Europe.",
+  },
+};
+
+export type CountrySlug = keyof typeof countryPages;
+
+export const getCountryPage = (slug?: string) =>
+  countryPages[(slug ?? "canada") as CountrySlug] ?? countryPages.canada;
+
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
@@ -24,15 +149,14 @@ const fadeUp = {
   }),
 };
 
-const services = [
+const getServices = (country: ReturnType<typeof getCountryPage>) => [
   {
     icon: FileText,
     category: "IMMIGRATION",
     title: "Immigration",
     items: ["Visa Services", "PR Services", "Work Permits", "Study Abroad"],
-    description:
-      "Expert immigration solutions to help you build your future in Canada.",
-    link: "/canada/immigration",
+    description: `Expert immigration solutions to help you build your future in ${country.name}.`,
+    link: `${country.routeBase}/immigration`,
     color: "blue",
     iconClass: "bg-[#004A92] text-white",
     categoryClass: "text-[#004A92]",
@@ -56,7 +180,7 @@ const services = [
     ],
     description:
       "Smart investment strategies for sustainable growth and long-term wealth.",
-    link: "/canada/investments",
+    link: `${country.routeBase}/investments`,
     color: "teal",
     iconClass: "bg-[#008A8A] text-white",
     categoryClass: "text-[#008A8A]",
@@ -78,7 +202,7 @@ const services = [
     ],
     description:
       "Strategic advisory to help your business expand and thrive in global markets.",
-    link: "/canada/consultation",
+    link: `${country.routeBase}/consultation`,
     color: "royal",
     iconClass: "bg-[#2464D8] text-white",
     categoryClass: "text-[#2464D8]",
@@ -98,9 +222,8 @@ const services = [
       "Risk Management",
       "Dispute Prevention",
     ],
-    description:
-      "Reliable legal support to protect you and your business in Canada.",
-    link: "/canada/legal-services",
+    description: `Reliable legal support to protect you and your business in ${country.name}.`,
+    link: `${country.routeBase}/legal-services`,
     color: "purple",
     iconClass: "bg-[#6B4BB3] text-white",
     categoryClass: "text-[#6B4BB3]",
@@ -114,10 +237,15 @@ const services = [
 ];
 
 const CanadaServices = () => {
+  const { countrySlug } = useParams();
+  const country = getCountryPage(countrySlug);
+  const services = getServices(country);
   const [activeIndex, setActiveIndex] = useState(1);
 
   const goToPrevious = () => {
-    setActiveIndex((current) => (current - 1 + services.length) % services.length);
+    setActiveIndex(
+      (current) => (current - 1 + services.length) % services.length,
+    );
   };
 
   const goToNext = () => {
@@ -129,14 +257,18 @@ const CanadaServices = () => {
       <section className="relative min-h-[calc(100vh-5rem)] overflow-hidden bg-[#F7FAFE]">
         <div className="absolute inset-0 pointer-events-none">
           <img
-            src="https://images.unsplash.com/photo-1517090504586-fde19ea6066f?w=1400&h=720&fit=crop"
+            src={country.heroImage}
             alt=""
             className="absolute left-0 top-0 h-[58%] w-[54%] object-cover opacity-[0.22]"
           />
           <div className="absolute left-0 top-0 h-[62%] w-[64%] bg-gradient-to-r from-[#F7FAFE]/15 via-[#F7FAFE]/58 to-[#F7FAFE]" />
           <div className="absolute inset-x-0 top-0 h-56 bg-gradient-to-b from-white/80 to-transparent" />
-          <Leaf className="absolute right-8 top-8 h-80 w-80 rotate-12 text-red-600/7 md:right-24 md:h-[30rem] md:w-[30rem]" />
-          <Leaf className="absolute right-40 top-44 h-36 w-36 -rotate-12 text-red-600/6 max-md:hidden" />
+          {/* {country.showLeafDecor && (
+            <>
+              <Leaf className={`absolute right-8 top-8 h-80 w-80 rotate-12 md:right-24 md:h-[30rem] md:w-[30rem] ${country.leafClass}`} />
+              <Leaf className={`absolute right-40 top-44 h-36 w-36 -rotate-12 max-md:hidden ${country.leafClass}`} />
+            </>
+          )} */}
         </div>
 
         <div className="container relative mx-auto max-w-[1560px] px-5 py-8 lg:px-10 lg:py-10">
@@ -150,8 +282,10 @@ const CanadaServices = () => {
               custom={0}
               className="mb-4 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-5 py-2 text-sm font-bold text-[#263B61] shadow-md shadow-slate-200/70"
             >
-              <Leaf size={17} className="fill-red-600 text-red-600" />
-              Canada Selected
+              {country.showLeafDecor && (
+                <Leaf size={17} className="fill-red-600 text-red-600" />
+              )}
+              {country.selectedLabel}
             </motion.div>
             <motion.h1
               variants={fadeUp}
@@ -159,15 +293,14 @@ const CanadaServices = () => {
               className="font-heading text-4xl font-extrabold leading-tight text-[#001B52] md:text-5xl lg:text-6xl"
             >
               Select Your Service in{" "}
-              <span className="text-[#C93432]">Canada</span>
+              <span style={{ color: country.accent }}>{country.shortName}</span>
             </motion.h1>
             <motion.p
               variants={fadeUp}
               custom={2}
               className="mx-auto mt-4 max-w-2xl text-base leading-7 text-[#405578] md:text-lg"
             >
-              Choose the advisory service you need to explore tailored support
-              options in Canada.
+              {country.description}
             </motion.p>
           </motion.div>
 
@@ -194,56 +327,56 @@ const CanadaServices = () => {
                 {services.map((service, index) => {
                   const isActive = index === activeIndex;
                   return (
-                  <article
-                    key={service.title}
-                    className={`min-w-[86%] overflow-hidden rounded-2xl border bg-white p-6 shadow-xl shadow-[#001B52]/10 transition-all duration-300 sm:min-w-[46%] md:min-w-[31.33%] lg:min-w-[calc(25%_-_18px)] ${
-                      service.background
-                    } ${
-                      isActive
-                        ? `${service.borderClass} ${service.activeClass} ring-2 lg:scale-[1.055]`
-                        : "border-slate-200/80"
-                    }`}
-                  >
-                    <div
-                      className={`mb-5 flex h-16 w-16 items-center justify-center rounded-full shadow-lg ${service.iconClass}`}
+                    <article
+                      key={service.title}
+                      className={`min-w-[86%] overflow-hidden rounded-2xl border bg-white p-6 shadow-xl shadow-[#001B52]/10 transition-all duration-300 sm:min-w-[46%] md:min-w-[31.33%] lg:min-w-[calc(25%_-_18px)] ${
+                        service.background
+                      } ${
+                        isActive
+                          ? `${service.borderClass} ${service.activeClass} ring-2 lg:scale-[1.055]`
+                          : "border-slate-200/80"
+                      }`}
                     >
-                      <service.icon size={28} />
-                    </div>
-                    <p
-                      className={`text-xs font-extrabold tracking-[0.08em] ${service.categoryClass}`}
-                    >
-                      {service.category}
-                    </p>
-                    <h2 className="mt-2 font-heading text-2xl font-extrabold text-[#001B52] lg:text-3xl">
-                      {service.title}
-                    </h2>
-                    <ul className="mt-5 min-h-[116px] space-y-2.5">
-                      {service.items.map((item) => (
-                        <li
-                          key={item}
-                          className="flex items-start gap-2 text-sm font-medium leading-5 text-[#263B61]"
-                        >
-                          <CheckCircle
-                            size={15}
-                            className={`mt-0.5 shrink-0 fill-current text-white ${service.checkClass}`}
-                          />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-5 border-t border-slate-200 pt-4" />
-                    <p className="min-h-[72px] text-sm leading-6 text-[#405578]">
-                      {service.description}
-                    </p>
-                    <Link to={service.link}>
-                      <Button
-                        className={`mt-6 h-12 w-full text-base font-bold text-white shadow-lg ${service.buttonClass}`}
+                      <div
+                        className={`mb-5 flex h-16 w-16 items-center justify-center rounded-full shadow-lg ${service.iconClass}`}
                       >
-                        Explore Service
-                        <ArrowRight size={17} className="ml-2" />
-                      </Button>
-                    </Link>
-                  </article>
+                        <service.icon size={28} />
+                      </div>
+                      <p
+                        className={`text-xs font-extrabold tracking-[0.08em] ${service.categoryClass}`}
+                      >
+                        {service.category}
+                      </p>
+                      <h2 className="mt-2 font-heading text-2xl font-extrabold text-[#001B52] lg:text-3xl">
+                        {service.title}
+                      </h2>
+                      <ul className="mt-5 min-h-[116px] space-y-2.5">
+                        {service.items.map((item) => (
+                          <li
+                            key={item}
+                            className="flex items-start gap-2 text-sm font-medium leading-5 text-[#263B61]"
+                          >
+                            <CheckCircle
+                              size={15}
+                              className={`mt-0.5 shrink-0 fill-current text-white ${service.checkClass}`}
+                            />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-5 border-t border-slate-200 pt-4" />
+                      <p className="min-h-[72px] text-sm leading-6 text-[#405578]">
+                        {service.description}
+                      </p>
+                      <Link to={service.link}>
+                        <Button
+                          className={`mt-6 h-12 w-full text-base font-bold text-white shadow-lg ${service.buttonClass}`}
+                        >
+                          Explore Service
+                          <ArrowRight size={17} className="ml-2" />
+                        </Button>
+                      </Link>
+                    </article>
                   );
                 })}
               </div>
