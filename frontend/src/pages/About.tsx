@@ -38,20 +38,20 @@ const teamMembers = [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    name: "Piyush Jain",
-    role: "CEO & Founder",
+    name: "Michael Thompson",
+    role: "Senior Investment & Business Consultant",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    name: "Piyush Jain",
-    role: "CEO & Founder",
+    name: "Ananya Sharma",
+    role: "Senior Immigration Advisor",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
   {
-    name: "Piyush Jain",
-    role: "CEO & Founder",
+    name: "Sarah Mitchell",
+    role: "Settlement & Client Success Manager",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   },
