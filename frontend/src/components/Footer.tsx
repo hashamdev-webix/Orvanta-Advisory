@@ -1,13 +1,5 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin } from "lucide-react";
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaWhatsapp,
-  FaTwitter,
-} from "react-icons/fa";
-import { MdEmail } from "react-icons/md";
+import { Mail, MapPin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -27,48 +19,6 @@ const Footer = () => {
               Your trusted partner for study, work, and tourist visa
               applications worldwide.
             </p>
-            <div className="flex gap-2.5">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-lg bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
-              >
-                <FaFacebookF className="text-primary-foreground text-lg" />
-              </a>
-              <a
-                href="https://www.instagram.com/orvanta_advisory?igsh=bTZ2aHFoNGEyZmZ4"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-lg bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
-              >
-                <FaInstagram className="text-primary-foreground text-lg" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-lg bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
-              >
-                <FaLinkedinIn className="text-primary-foreground text-lg" />
-              </a>
-              <a
-                href="https://wa.me/447411962102"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-lg bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
-              >
-                <FaWhatsapp className="text-primary-foreground text-lg" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="h-10 w-10 rounded-lg bg-primary-foreground/10 hover:bg-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
-              >
-                <FaTwitter className="text-primary-foreground text-lg" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -165,45 +115,29 @@ const Footer = () => {
                   className="mt-0.5 shrink-0 text-white hover:text-accent hover:translate-x-1 transition-all duration-200"
                 />
                 <span className="leading-relaxed hover:text-accent transition-colors cursor-pointer">
-                  Mohali, India | London, United Kingdom | Dubai, United Arab
-                  Emirates
+                  Registered Address: Unit 1603, 16/F The L. Plaza, 367-375
+                  Queen's Road Central, Sheung Wan, Hong Kong
                 </span>
               </li>
-              <li className="flex items-center gap-2.5">
+              <li className="flex items-start gap-2.5">
                 <Mail
                   size={18}
-                  className="shrink-0 text-white hover:text-accent hover:translate-x-1 transition-all duration-200"
+                  className="mt-0.5 shrink-0 text-white hover:text-accent hover:translate-x-1 transition-all duration-200"
                 />
-                <a
-                  href="mailto:info@orvantaadvisory.com"
-                  className="hover:text-accent transition-colors cursor-pointer"
-                >
-                  info@orvantaadvisory.com
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone
-                  size={18}
-                  className="shrink-0 text-white hover:text-accent hover:translate-x-1 transition-all duration-200"
-                />
-                <a
-                  href="tel:+918196982305"
-                  className="hover:text-accent transition-colors cursor-pointer"
-                >
-                  India: +91 81969 82305
-                </a>
-              </li>
-              <li className="flex items-center gap-2.5">
-                <Phone
-                  size={18}
-                  className="shrink-0 text-white hover:text-accent hover:translate-x-1 transition-all duration-200"
-                />
-                <a
-                  href="tel:+447411962102"
-                  className="hover:text-accent transition-colors cursor-pointer"
-                >
-                  UK: +44 7411 962102
-                </a>
+                <div className="space-y-1">
+                  <a
+                    href="mailto:info@orvantaadvisory.com"
+                    className="block hover:text-accent transition-colors cursor-pointer"
+                  >
+                    info@orvantaadvisory.com
+                  </a>
+                  <a
+                    href="mailto:manage.orvanta@gmail.com"
+                    className="block hover:text-accent transition-colors cursor-pointer"
+                  >
+                    manage.orvanta@gmail.com
+                  </a>
+                </div>
               </li>
             </ul>
           </div>

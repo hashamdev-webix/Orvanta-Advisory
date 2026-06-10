@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Building2 } from "lucide-react";
+import { MapPin, Mail, Clock, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
@@ -92,11 +92,9 @@ const HongKong = () => {
                         <Building2 className="text-secondary" size={24} />
                       </div>
                       <div>
-                        <h4 className="font-semibold text-foreground mb-2">Office Address</h4>
+                        <h4 className="font-semibold text-foreground mb-2">Registered Address</h4>
                         <p className="text-muted-foreground leading-relaxed">
-                          Unit 1603, 16/F, The L.Plaza<br />
-                          367-375 Queens Road Central<br />
-                          Sheung Wan, Hong Kong
+                          Unit 1603, 16/F The L. Plaza, 367-375 Queen's Road Central, Sheung Wan, Hong Kong
                         </p>
                       </div>
                     </div>
@@ -154,35 +152,13 @@ const HongKong = () => {
               </p>
             </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid gap-8">
               <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
                 custom={1}
-                className="bg-card rounded-xl p-8 card-elevated border border-border"
-              >
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 mb-6">
-                  <Phone className="text-secondary" size={32} />
-                </div>
-                <h3 className="font-heading font-bold text-xl text-foreground mb-3">
-                  Phone
-                </h3>
-                <p className="text-muted-foreground mb-4">
-                  Call us for immediate assistance
-                </p>
-                <a href="tel:+85212345678" className="text-secondary font-semibold hover:underline">
-                  +852 1234 5678
-                </a>
-              </motion.div>
-
-              <motion.div
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                variants={fadeUp}
-                custom={2}
                 className="bg-card rounded-xl p-8 card-elevated border border-border"
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-secondary/10 mb-6">
@@ -194,8 +170,11 @@ const HongKong = () => {
                 <p className="text-muted-foreground mb-4">
                   Send us your queries anytime
                 </p>
-                <a href="mailto:hongkong@orvanta.com" className="text-secondary font-semibold hover:underline">
-                  hongkong@orvanta.com
+                <a href="mailto:info@orvantaadvisory.com" className="block text-secondary font-semibold hover:underline">
+                  info@orvantaadvisory.com
+                </a>
+                <a href="mailto:manage.orvanta@gmail.com" className="mt-1 block text-secondary font-semibold hover:underline">
+                  manage.orvanta@gmail.com
                 </a>
               </motion.div>
             </div>

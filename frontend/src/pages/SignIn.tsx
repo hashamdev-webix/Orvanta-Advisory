@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -7,7 +7,6 @@ import Layout from "@/components/Layout";
 import { Mail, Lock } from "lucide-react";
 
 const SignInPage = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -15,14 +14,6 @@ const SignInPage = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple validation - set logged in flag and redirect to payment page
-    if (formData.email && formData.password) {
-      localStorage.setItem("isLoggedIn", "true");
-      localStorage.setItem("userEmail", formData.email);
-      navigate("/payment");
-    } else {
-      alert("Please fill in all fields");
-    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -93,6 +84,7 @@ const SignInPage = () => {
 
               <Button
                 type="submit"
+                disabled
                 className="w-full h-12 bg-gradient-to-r from-accent to-amber-500 text-accent-foreground hover:from-accent/90 hover:to-amber-500/90 font-semibold text-base"
               >
                 Sign In

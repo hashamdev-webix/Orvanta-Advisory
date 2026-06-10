@@ -4,15 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { User, Mail, Building2, Phone, LogOut } from "lucide-react";
+import { User, Mail, Building2, LogOut } from "lucide-react";
 
 const Profile = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: localStorage.getItem("userName") || "",
     email: localStorage.getItem("userEmail") || "",
-    company: localStorage.getItem("userCompany") || "",
-    phone: "+1 234 567 8900"
+    company: localStorage.getItem("userCompany") || ""
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -96,21 +95,6 @@ const Profile = () => {
                     name="company"
                     type="text"
                     value={formData.company}
-                    onChange={handleChange}
-                    className="h-11"
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="phone" className="text-sm font-medium text-foreground mb-2 flex items-center gap-2">
-                    <Phone size={16} />
-                    Phone Number
-                  </Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    value={formData.phone}
                     onChange={handleChange}
                     className="h-11"
                   />

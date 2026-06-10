@@ -39,6 +39,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    return;
     setLoading(true);
 
     try {
@@ -309,10 +310,10 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  disabled={loading}
+                  disabled
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90 font-semibold text-base"
                 >
-                  {loading ? "Sending..." : "Submit"}{" "}
+                  Submit{" "}
                   <Send size={18} className="ml-2" />
                 </Button>
               </motion.form>
@@ -346,17 +347,11 @@ const Contact = () => {
                     <MapPin size={22} className="text-primary" />
                   </div>
                   <div>
-                    <p className="font-semibold text-foreground text-base">Orvanta Advisory</p>
-                    <p className="text-muted-foreground text-sm">5th Avenue, Calgary, Alberta, Canada</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center shrink-0">
-                    <MapPin size={22} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-base">Orvanta Advisory</p>
-                    <p className="text-muted-foreground text-sm">167-169 Great Portland Street, 5th Floor, London W1W 5PF</p>
+                    <p className="font-semibold text-foreground text-base">Registered Address</p>
+                    <p className="text-muted-foreground text-sm">
+                      Unit 1603, 16/F The L. Plaza, 367-375 Queen's Road
+                      Central, Sheung Wan, Hong Kong
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -370,17 +365,9 @@ const Contact = () => {
                     <p className="text-muted-foreground text-sm">
                       info@orvantaadvisory.com
                     </p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="h-12 w-12 rounded-xl bg-primary/5 flex items-center justify-center shrink-0">
-                    <Phone size={22} className="text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground text-base">
-                      Phone
+                    <p className="text-muted-foreground text-sm">
+                      manage.orvanta@gmail.com
                     </p>
-                    <p className="text-muted-foreground text-sm">+91 81969 82305</p>
                   </div>
                 </div>
               </motion.div>

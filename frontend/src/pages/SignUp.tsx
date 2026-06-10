@@ -1,34 +1,21 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Layout from "@/components/Layout";
-import { Building2, Mail, Lock, User, Phone } from "lucide-react";
+import { Building2, Mail, Lock, User } from "lucide-react";
 
 const SignUpPage = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
-    phone: "",
     password: "",
     confirmPassword: ""
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simple validation
-    if (formData.password !== formData.confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-    // Store user data and redirect to sign-in page after signup
-    localStorage.setItem("userName", formData.name);
-    localStorage.setItem("userCompany", formData.company);
-    alert("Account created successfully! Please login.");
-    navigate("/sign-in");
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -105,23 +92,6 @@ const SignUpPage = () => {
               </div>
 
               <div>
-                <Label htmlFor="phone" className="text-sm font-medium text-foreground mb-2 flex items-center gap-2">
-                  <Phone size={16} />
-                  Phone Number
-                </Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  required
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                  className="h-11"
-                />
-              </div>
-
-              <div>
                 <Label htmlFor="password" className="text-sm font-medium text-foreground mb-2 flex items-center gap-2">
                   <Lock size={16} />
                   Password
@@ -157,6 +127,7 @@ const SignUpPage = () => {
 
               <Button
                 type="submit"
+                disabled
                 className="w-full h-12 bg-gradient-to-r from-accent to-amber-500 text-accent-foreground hover:from-accent/90 hover:to-amber-500/90 font-semibold text-base"
               >
                 Create Account
@@ -166,9 +137,9 @@ const SignUpPage = () => {
             <div className="mt-6 text-center">
               <p className="text-sm text-muted-foreground">
                 Already have an account?{" "}
-                <Link to="/sign-in" className="text-secondary font-semibold hover:underline">
+                <span className="text-muted-foreground font-semibold cursor-not-allowed">
                   Sign In
-                </Link>
+                </span>
               </p>
             </div>
           </div>
