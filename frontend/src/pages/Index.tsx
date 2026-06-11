@@ -116,7 +116,9 @@ const Index = () => {
           <div className="absolute left-[8%] top-[12%] h-72 w-72 rounded-full border border-primary/20" />
           <div className="absolute right-[10%] bottom-[8%] h-96 w-96 rounded-full border border-accent/20" />
         </div>
-
+        <p className=" text-xl ml-64 mt-10 leading-8 text-muted-foreground">
+          <span>**The Website is still Under Construction.</span>
+        </p>
         <div className="container relative mx-auto grid min-h-[620px] max-w-[1500px] items-start gap-8 px-5 pt-4 pb-0 lg:grid-cols-[0.86fr_1.14fr] lg:px-10 lg:pt-6">
           <motion.div initial="hidden" animate="visible" className="max-w-xl">
             <motion.h1
